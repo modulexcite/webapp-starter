@@ -11,6 +11,7 @@ var api        = require('./routes/api.js');
 var index      = require('./routes/index.js');
 
 // middleware
+app.use("/public", express.static(__dirname + "/build"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
