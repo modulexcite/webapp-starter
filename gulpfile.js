@@ -14,14 +14,33 @@ var browserify = require('gulp-browserify');
 //For re-running node when server source changes
 var nodemon = require('gulp-nodemon');
 
-// Delete everything instide the build directory
+//Convert all js file jsdocs annotation to markdown
+var jsdoc2md = require("jsdoc-to-markdown");
+var gutil = require("gulp-util");
+var fs = require("fs");
+
+gulp.task("docs", ['javascript'], function(done){
+    var src = "build/js/components/main.js";
+    var dest = "docs/components.md";
+    var options = {};
+
+    gutil.log("writing documentation to " + dest);
+
+    jsdoc2md.render(src, options)
+        .on("error", function(err){
+            gutil.log(gutil.colors.red("jsdoc2md failed"), err.message);
+        })
+        .pipe(fs.createWriteStream(dest));
+});
+
+// Delete everything inside the build directory
 gulp.task('clean', function() {
   return gulp.src(['build/*'], {read: false}).pipe(clean());
 });
 
 gulp.task('javascript', function() {
 
-    console.log("Building Javascript");
+    gutil.log("transforming jsx to build");
 
     // Take every JS file in ./public/js
     return gulp.src('public/js/**/*.js')
@@ -39,7 +58,7 @@ gulp.task('javascript', function() {
 
 gulp.task('browserify', ['javascript'], function() {
 
-    console.log("Browserify");
+    gutil.log("running browserify");
 
     return gulp.src('build/js/client.js')
         .pipe(browserify({
