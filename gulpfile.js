@@ -72,15 +72,19 @@ gulp.task('browserify', ['javascript'], function() {
 });
 
 gulp.task('watch', ['clean'], function() {
-
+    var watching = false;
     gulp.start('browserify', function() {
 
-        // Watch for changes in public javascript code and run the 'javascript' task
-        gulp.watch('public/**/*.js', ['browserify']);
+        // Protect against this function being called twice. (Bug?)
+        if (!watching) {
+            watching = true;
 
-        // Restart node if anything in build changes
-        nodemon({script: 'server.js', watch: 'build'});
+            // Watch for changes in public javascript code and run the 'javascript' task
+            gulp.watch('public/**/*.js', ['browserify']);
 
+            // Restart node if anything in build changes
+            nodemon({script: 'server.js', watch: 'build'});
+        }
     });
 });
 

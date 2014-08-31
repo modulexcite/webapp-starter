@@ -2,11 +2,9 @@
 
 var React  = require('react');
 var Main   = require('./components/main.js');
-
-//Main page router
-//var router = new Router();
+var Router = require('./routing/router.js')
 
 React.renderComponent(
-    <Main.HelloMessage name="Fred" />,
+    <Main.HelloMessage />,
     document.getElementById("content")
 );

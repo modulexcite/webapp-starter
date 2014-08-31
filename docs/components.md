@@ -11,10 +11,6 @@
 * [class: GoodbyeMessage](#GoodbyeMessage)
   * [GoodbyeMessage.renderItem(item)](#GoodbyeMessage.renderItem)
   * [GoodbyeMessage.render()](#GoodbyeMessage.render)
-
-**Members**
-
-* [React](#React)
  
 <a name="module_Main"></a>
 #Main
@@ -53,5 +49,3 @@ Renders just the single item
 ##GoodbyeMessage.render()
 Renders all the items
 
-<a name="React"></a>
-#React
