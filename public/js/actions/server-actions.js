@@ -4,8 +4,7 @@ var Constants = require('../constants/constants.js');
 var ActionTypes = Constants.ActionTypes;
 
 /**
- * The actions defined here are for sending server responses
- * related to locations returned from the ESDB REST API
+ * The actions defined here are for sending server responses.
  */
 module.exports = {
     
