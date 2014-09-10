@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TEST SUITE - Mocha Spec Runner</title>
+    <link rel="stylesheet" href="../bower/mocha/mocha.css">
+</head>
+<body>
+    <div id="mocha"></div>
+
+    <script src="../bower/mocha/mocha.js"></script>
+
+    <script>
+        mocha.setup('bdd')
+    </script>
+
+    <script src="../bower/chai/chai.js"></script>
+
+    <script>
+        var assert = chai.assert;
+        var expect = chai.expect;
+        var should = chai.should();
+    </script>
+
+    <script src="./shim/es5-shim.js"></script>
+
+    <!-- include source files here... -->
+    <script src="./build/test.build.js"></script>
+
+    <script>
+        if (window.mochaPhantomJS) {
+            mochaPhantomJS.run();
+        } else {
+            mocha.run();
+        }
+    </script>
+
+</body>
+</html>

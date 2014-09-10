@@ -11,6 +11,9 @@ var rename = require('gulp-rename');
 //For browserify build
 var browserify = require('gulp-browserify');
 
+//Mocha tests
+var mochaPhantomJS = require('gulp-mocha-phantomjs');
+
 //For re-running node when server source changes
 var nodemon = require('gulp-nodemon');
 
@@ -19,6 +22,7 @@ var jsdoc2md = require("jsdoc-to-markdown");
 var gutil = require("gulp-util");
 var fs = require("fs");
 
+//Documentation generation
 gulp.task("docs", ['javascript'], function(done){
     var src = "build/js/components/main.js";
     var dest = "docs/components.md";
@@ -33,18 +37,35 @@ gulp.task("docs", ['javascript'], function(done){
         .pipe(fs.createWriteStream(dest));
 });
 
+gulp.task('test', ['build_tests'], function () {
+    return gulp.src('test/runner.html')
+        .pipe(mochaPhantomJS());
+});
+
+
+gulp.task('build_tests', ['browserify'], function() {
+
+    gutil.log("transforming tests (jsx) and running browserify");
+
+    return gulp.src(['test/tests/*.test.js'])
+        .pipe(react())
+        .pipe(browserify())
+        .pipe(rename('test.build.js'))
+        .pipe(gulp.dest('test/build/'))
+});
+
 // Delete everything inside the build directory
 gulp.task('clean', function() {
   return gulp.src(['build/*'], {read: false}).pipe(clean());
 });
 
-gulp.task('javascript', function() {
+gulp.task('build_javascript', function() {
 
     gutil.log("transforming jsx to build");
 
     // Take every JS file in ./public/js
     return gulp.src('public/js/**/*.js')
-        // Turn thier React JSX syntax into regular javascript
+        // Turn their React JSX syntax into regular javascript
         .pipe(react())
         // Output each one of those --> ./build/js/ directory
         .pipe(gulp.dest('build/js/'))
@@ -56,7 +77,8 @@ gulp.task('javascript', function() {
         .pipe(gulp.dest('build/js/'));
 });
 
-gulp.task('browserify', ['javascript'], function() {
+
+gulp.task('browserify', ['build_javascript'], function() {
 
     gutil.log("running browserify");
 
@@ -79,8 +101,8 @@ gulp.task('watch', ['clean'], function() {
         if (!watching) {
             watching = true;
 
-            // Watch for changes in public javascript code and run the 'javascript' task
-            gulp.watch('public/**/*.js', ['browserify']);
+            // Watch for changes in public javascript code and run the 'browserify' task
+            gulp.watch(['public/**/*.js', 'test/**/*.test.js'], ['browserify', 'test']);
 
             // Restart node if anything in build changes
             nodemon({script: 'server.js', watch: 'build'});
@@ -89,5 +111,5 @@ gulp.task('watch', ['clean'], function() {
 });
 
 gulp.task('default', ['clean'], function() {
-  return gulp.start('browserify');
+    return gulp.start('browserify');
 });

@@ -55,12 +55,19 @@ var HelloMessage = React.createClass(
         var dependenciesLoaded = true;
         var renderView = dependenciesLoaded && nameLoaded;
         if (renderView) {
-            return React.DOM.div(null, "Hello ", this.state.name);
+            return React.DOM.div({className: "hello"}, "Hello ", this.state.name);
         } else {
             return null;
         }
     }
 });
 
+var _mockStore = function(object) {
+    getStateFromStores = function() {
+        return object;
+    }
+}
+
 /** @module Main */
 module.exports.HelloMessage = HelloMessage;
+module.exports._mockStore = _mockStore;
