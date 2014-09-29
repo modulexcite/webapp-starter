@@ -1,4 +1,4 @@
-var Dispatcher = require('./flux.js').Dispatcher;
+var Dispatcher = require('flux').Dispatcher;
 var copyProperties = require('react/lib/copyProperties');
 
 var AppDispatcher = copyProperties(new Dispatcher(), {

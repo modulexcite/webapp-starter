@@ -1,6 +1,6 @@
 
 var director = require('director');
-var ActionCreators = require("../actions/actions.js");
+var ActionCreators = require("../actions/actions");
 
 var routes = {
 

@@ -1,5 +1,5 @@
-var Dispatcher = require('../dispatcher/dispatcher.js');
-var Constants = require('../constants/constants.js');
+var Dispatcher = require('../dispatcher/dispatcher');
+var Constants = require('../constants/constants');
 
 var EventEmitter = require('events').EventEmitter;
 var Merge = require('react/lib/merge');

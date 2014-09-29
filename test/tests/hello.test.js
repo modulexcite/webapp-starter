@@ -1,12 +1,15 @@
 /** @jsx React.DOM */
 
+var expect = require('chai').expect;
+
 describe("Main Module", function () {
 
     describe("HelloMessage component", function () {
-        var Main = require("../../build/js/components/main.js");
         var React = require('react/addons');
-        var LoadStates = require('../../build/js/constants/constants.js').LoadStates;
         var TestUtils = React.addons.TestUtils;
+
+        var Main = require("../../public/js/components/main.js");
+        var LoadStates = require('../../public/js/constants/constants.js').LoadStates;
         
         //Mock the store in the Main Module
         Main._mockStore({
@@ -20,7 +23,7 @@ describe("Main Module", function () {
         );
 
         it('should set its state', function(done){
-            expect(helloMessageComponent.state.name).to.equal("Fred");
+            expect(helloMessageComponent.state.name).to.equal("Freddy");
             done();
         });
 

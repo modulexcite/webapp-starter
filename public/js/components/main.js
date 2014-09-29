@@ -4,14 +4,14 @@
 var React = require("react");
 
 // Constants
-var Constants = require('../constants/constants.js');
+var Constants = require('../constants/constants');
 var LoadStates = Constants.LoadStates;
 
 // Stores
-var NameStore = require("../stores/store.js");
+var NameStore = require("../stores/store");
 
 // Actions
-var ActionCreators = require("../actions/actions.js");
+var ActionCreators = require("../actions/actions");
 
 /**
  * Private function to fetch the state needed by this component from the stores
@@ -55,7 +55,7 @@ var HelloMessage = React.createClass(
         var dependenciesLoaded = true;
         var renderView = dependenciesLoaded && nameLoaded;
         if (renderView) {
-            return <div className="hello">Hello {this.state.name}</div>;
+            return <div className="hello...">Hello {this.state.name}</div>;
         } else {
             return null;
         }

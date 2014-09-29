@@ -1,6 +1,6 @@
-var Dispatcher = require('../dispatcher/dispatcher.js');
-var Constants = require('../constants/constants.js');
-var Util = require('../utils/util.js');
+var Dispatcher = require('../dispatcher/dispatcher');
+var Constants = require('../constants/constants');
+var Util = require('../utils/util');
 
 var ActionTypes = Constants.ActionTypes;
 
