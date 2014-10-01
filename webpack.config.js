@@ -6,7 +6,9 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: "jsx-loader?harmony" } // loaders can take parameters as a querystring
+            { test: /\.js$/, loader: "jsx-loader?harmony" },
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.(png|jpg)$/, loader: "url-loader?limit=8192"},
         ]
     },
     resolve: {

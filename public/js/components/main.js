@@ -1,7 +1,11 @@
 /** @jsx React.DOM */
 
-/** @ignore */
 var React = require("react");
+
+require('./main.css');
+
+var logo = document.createElement('img');
+logo.src = require('../../img/logo.png');
 
 // Constants
 var Constants = require('../constants/constants');
@@ -25,7 +29,7 @@ function getStateFromStores() {
 
 /**
  * @class
- * 
+ *
  * Write a friendly hello message!
  */
 var HelloMessage = React.createClass(
@@ -55,7 +59,12 @@ var HelloMessage = React.createClass(
         var dependenciesLoaded = true;
         var renderView = dependenciesLoaded && nameLoaded;
         if (renderView) {
-            return <div className="hello...">Hello {this.state.name}</div>;
+            return (
+                <div>
+                    <img className="main-image" src={logo.src} />
+                    <span className="main-message">Hello {this.state.name}</span>
+                </div>
+            );
         } else {
             return null;
         }
