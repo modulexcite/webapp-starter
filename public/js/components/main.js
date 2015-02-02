@@ -1,17 +1,21 @@
 /** @jsx React.DOM */
 
-/** @ignore */
 var React = require("react");
 
+require('./main.css');
+
+var logo = document.createElement('img');
+logo.src = require('../../img/logo.png');
+
 // Constants
-var Constants = require('../constants/constants.js');
+var Constants = require('../constants/constants');
 var LoadStates = Constants.LoadStates;
 
 // Stores
-var NameStore = require("../stores/store.js");
+var NameStore = require("../stores/store");
 
 // Actions
-var ActionCreators = require("../actions/actions.js");
+var ActionCreators = require("../actions/actions");
 
 /**
  * Private function to fetch the state needed by this component from the stores
@@ -25,7 +29,7 @@ function getStateFromStores() {
 
 /**
  * @class
- * 
+ *
  * Write a friendly hello message!
  */
 var HelloMessage = React.createClass(
@@ -55,7 +59,12 @@ var HelloMessage = React.createClass(
         var dependenciesLoaded = true;
         var renderView = dependenciesLoaded && nameLoaded;
         if (renderView) {
-            return <div className="hello">Hello {this.state.name}</div>;
+            return (
+                <div>
+                    <img className="main-image" src={logo.src} />
+                    <span className="main-message">Hello {this.state.name}</span>
+                </div>
+            );
         } else {
             return null;
         }
