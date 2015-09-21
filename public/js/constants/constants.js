@@ -1,13 +1,13 @@
-var keyMirror = require('react/lib/keyMirror');
+import keyMirror from "react/lib/keyMirror";
 
 module.exports = {
 
     ActionTypes: keyMirror({
-        //View action
-        SHOW_WELCOME: null,
+        // View action
+        FETCH_CONTACTS: null,
 
-        //Server action from response
-        RECEIVED_RAW_NAME: null,
+        // Server action from response
+        RECEIVED_RAW_CONTACTS: null,
     }),
 
     PayloadSources: keyMirror({

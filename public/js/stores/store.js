@@ -1,72 +1,69 @@
-var Dispatcher = require('../dispatcher/dispatcher');
-var Constants = require('../constants/constants');
+import Dispatcher from "../dispatcher/dispatcher";
+import {ActionTypes, LoadStates} from "../constants/constants";
+import assign from "react/lib/Object.assign";
+import {EventEmitter} from "events";
 
-var EventEmitter = require('events').EventEmitter;
-var Merge = require('react/lib/merge');
-
-var ActionTypes = Constants.ActionTypes;
-var LoadStates = Constants.LoadStates;
-
-var CHANGE_EVENT = 'change';
+const CHANGE_EVENT = "change";
 
 //
-// Private data managed by this store is the name and the loadstate
-// 
+// Private data managed by this store is the list of contacts and the loadstate
+//
 
-var _name = "";
-var _loadState = LoadStates.INIT;
+let _contacts = "";
+let _loadState = LoadStates.INIT;
 
-var NameStore = Merge(EventEmitter.prototype, {
+let ContactListStore = assign({}, EventEmitter.prototype, {
 
     //
     // Boiler plate setup so the store can notify listeners (views) of changes
     //
 
-    emitChange: function() {
+    emitChange() {
         this.emit(CHANGE_EVENT);
     },
 
-    addChangeListener: function(callback) {
+    addChangeListener(callback) {
         this.on(CHANGE_EVENT, callback);
     },
 
-    removeChangeListener: function(callback) {
+    removeChangeListener(callback) {
         this.removeListener(CHANGE_EVENT, callback);
     },
 
     //
     // Public API the store exposes
     //
-    
-    loadState: function() {
+
+    loadState() {
         return _loadState;
     },
 
-    getName: function() {
-        return _name;
-    },  
+    getContactList() {
+        return _contacts;
+    }
 });
 
 //
 // Action handlers
 //
 
-NameStore.dispatchToken = Dispatcher.register(function(payload) {
-    var action = payload.action;
+ContactListStore.dispatchToken = Dispatcher.register((payload) => {
+    const action = payload.action;
 
-    switch(action.type) {
+    switch (action.type) {
 
-        //Handle the action
-        case ActionTypes.RECEIVED_RAW_NAME:
-            _name = action.rawName;
-            _loadState = LoadStates.LOADED;
-            NameStore.emitChange();
-            break;
+    // Handle the action
+    case ActionTypes.RECEIVED_RAW_CONTACTS:
+        _contacts = action.contacts;
+        console.log("Store got contact", _contacts, action);
+        _loadState = LoadStates.LOADED;
+        ContactListStore.emitChange();
+        break;
 
-      default:
+    default:
         // do nothing
     }
 
 });
 
-module.exports = NameStore;
+export default ContactListStore;

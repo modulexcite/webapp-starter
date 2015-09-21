@@ -1,17 +1,16 @@
-var Dispatcher = require('../dispatcher/dispatcher');
-var Constants = require('../constants/constants');
-
-var ActionTypes = Constants.ActionTypes;
+import Dispatcher from "../dispatcher/dispatcher";
+import {ActionTypes} from "../constants/constants";
 
 /**
  * The actions defined here are for sending server responses.
  */
+
 module.exports = {
-    
-    receiveName: function(data) {
-        var action = {
-            type: ActionTypes.RECEIVED_RAW_NAME,
-            rawName: data
+
+    receiveName(data) {
+        const action = {
+            type: ActionTypes.RECEIVED_RAW_CONTACTS,
+            contacts: data
         };
         Dispatcher.handleServerAction(action);
     },
