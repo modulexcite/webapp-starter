@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 var expect = require("chai").expect;
 var Test = require("react-test-tree");
 import React from "react/addons";
@@ -62,24 +64,9 @@ describe("Main Module", function () {
                 }
             };
 
-            let page = Test(<ContactList contactList={testList} loadState={LoadStates.LOADED} current={2}/>, {
-                context: {
-                    router: Router
-                }
-            });
-
-            console.log(page);
-
-            // it("should display the title as the name of the contact", (done) => {
-            //    expect(page.title.innerText).to.equal("Bob");
-            //    done();
-            // });
-            // it("should display the description with the age", (done) => {
-            //    expect(page.description.innerText).to.equal("Bob is 22 old.");
-            //    done();
-            // });
+            /**
+             * TODO: How do we test code with react-router used in the context (Link, for example).
+             */
         });
-
     });
-
 });
