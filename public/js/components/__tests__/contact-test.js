@@ -1,13 +1,10 @@
-/* eslint-env mocha */
-
 var expect = require("chai").expect;
 var Test = require("react-test-tree");
 import React from "react/addons";
 import {Router} from "react-router";
 
-import Contact from "../../public/js/components/contact";
-import ContactList from "../../public/js/components/contactlist";
-import {LoadStates} from "../../public/js/constants/constants";
+import Contact from "../contact.jsx";
+import {LoadStates} from "../../constants/constants.js";
 
 describe("Main Module", function () {
 
@@ -27,7 +24,7 @@ describe("Main Module", function () {
                 done();
             });
             it("should display the description with the age", (done) => {
-                expect(page.description.innerText).to.equal("Bob is 22 old.");
+                expect(page.description.innerText).to.equal("Bob is 22 years old.");
                 done();
             });
         });
@@ -40,33 +37,6 @@ describe("Main Module", function () {
                 done();
             });
 
-        });
-    });
-
-    describe("Contactlist", () => {
-
-        describe("A well formed component list", () => {
-            const testList = {
-                1: {
-                    id: "1",
-                    name: "Dan",
-                    age: 22
-                },
-                2: {
-                    id: "2",
-                    name: "Lee",
-                    age: 33
-                },
-                3: {
-                    id: "3",
-                    name: "Nick",
-                    age: 14
-                }
-            };
-
-            /**
-             * TODO: How do we test code with react-router used in the context (Link, for example).
-             */
         });
     });
 });

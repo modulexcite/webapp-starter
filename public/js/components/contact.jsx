@@ -8,7 +8,7 @@ export default React.createClass({
     render() {
         if (this.props.contact) {
             const contact =
-                `${this.props.contact.name} is ${this.props.contact.age} old.`;
+                `${this.props.contact.name} is ${this.props.contact.age} years old.`;
 
             return (
                 <div>

@@ -25973,7 +25973,7 @@
 
 	    render: function render() {
 	        if (this.props.contact) {
-	            var contact = this.props.contact.name + " is " + this.props.contact.age + " old.";
+	            var contact = this.props.contact.name + " is " + this.props.contact.age + " years old.";
 
 	            return _react2["default"].createElement(
 	                "div",
