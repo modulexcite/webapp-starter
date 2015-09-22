@@ -1,1 +1,1 @@
-require("./tests/hello.test.js");
+require("./tests/contact.test.js");

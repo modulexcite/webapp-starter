@@ -1,10 +1,16 @@
-/** @jsx React.DOM */
+import React from "react";
+import App from "./components/app";
+import Router from "react-router";
+const {Route, DefaultRoute} = Router;
 
-var React  = require('react');
-var Main   = require('./components/main');
-var Router = require('./routing/router')
+import ContactList from "./components/contactlist";
 
-React.renderComponent(
-    <Main.HelloMessage />,
-    document.getElementById("title")
+const routes = (
+    <Route path="/" handler={App}>
+        <DefaultRoute name="contacts" handler={ContactList} />
+    </Route>
 );
+
+Router.run(routes, Handler => {
+    React.render(<Handler/>, document.getElementById("content"));
+});

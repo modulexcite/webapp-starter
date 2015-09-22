@@ -1,4 +1,5 @@
-var ServerActionCreators = require("../actions/server-actions.js");
+import ServerActionCreators from "../actions/server-actions.js";
+import axios from "axios";
 
 module.exports = {
 
@@ -6,16 +7,15 @@ module.exports = {
     // Utility file of server actions
     //
 
-    loadName: function() {
-        var url = "/api/name";
-        $.ajax({"url": url, 
-                "dataType": "json", 
-                "type": "GET",
-                "contentType": "application/json",
-            success: function(data) {
-                ServerActionCreators.receiveName(data);
-            },
-        });
+    fetchContacts() {
+        const url = "/api/contacts";
+        axios.get(url)
+            .then((response) => {
+                const data = response.data;
+                ServerActionCreators.receiveName(data.contacts);
+            })
+            .catch((err) => {
+                console.error("Error fetching contact:", err);
+            });
     },
-
 };

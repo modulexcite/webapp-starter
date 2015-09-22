@@ -6,7 +6,9 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loader: "jsx-loader?harmony" },
+            { test: /\.(js|jsx)$/,
+              loader: "babel?optional=es7.objectRestSpread",
+              exclude: /node_modules/ },
         ]
     },
     resolve: {
