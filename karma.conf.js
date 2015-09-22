@@ -1,4 +1,4 @@
-var webpack = require("webpack");
+require("webpack");
 
 module.exports = function (config) {
     config.set({
@@ -21,10 +21,13 @@ module.exports = function (config) {
                 loaders: [
                     { test: /\.(js|jsx)$/, loader: "babel-loader", exclude: /node_modules/ }
                 ]
+            },
+            resolve: {
+                extensions: ["", ".js", ".jsx", ".json"]
             }
         },
         webpackServer: {
             noInfo: true
-        }
+        },
     });
 };
