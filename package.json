@@ -3,7 +3,7 @@
   "description": "Starter webapp project",
   "main": "server.js",
   "scripts": {
-    "lint": "eslint public/js/**/*",
+    "lint": "eslint public/js/**/* routes/*.js",
     "test": "npm run lint && karma start",
     "test-only": "karma start",
     "start": "node server.js",
