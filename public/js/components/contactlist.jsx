@@ -27,7 +27,7 @@ export default React.createClass({
         // Build list of links for each contact
         let contactElements = _.map(this.props.contactList, (contact) => {
             return (
-                <div className="row" refCollection="contacts">
+                <div key={contact.id} className="row" refCollection="contacts">
                     <div className="col-md-3">
                         <span style={{fontSize: 26}}>
                             <Link

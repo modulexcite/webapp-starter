@@ -23,7 +23,7 @@ module.exports = {
               loader: "file-loader?name=[name].[ext]" }
         ]
     },
-    
+
     resolve: {
         extensions: ["", ".js", ".jsx", ".json"]
     }
