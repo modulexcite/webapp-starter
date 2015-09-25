@@ -1,9 +1,11 @@
 sudo: false
 language: node_js
 node_js:
-    - "0.12"
+- '0.12'
 before_install:
-    - "export DISPLAY=:99.0"
-    - "sh -e /etc/init.d/xvfb start"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 notifications:
   email: false
+  slack:
+    secure: P/FXLjzrNP5mHt6Jfsvph46Zie/ZeTjOpYluencnsgsDCv6vDuPVcxFJzRbQwdcp9IOFolRubzGr/QL3btlqztUFY0KiIi048d0koOUsUlEHwA+37yAK6MOttbUcVFPbKFGLEJhI89X/0Aej8LODdkzljvqp6mM2GqwHXEPfFgDTp6uG/Tq8A4gA3tGVC0AMvKlHYJRHq8D1fcYqdzd5KMjYzsv4yHjZ8pWWENUhF2UuMbJuR+Qo+3RxnitXRxac9IqIReiiOj/BsoENXF3ySQX1AAZoLV+X1LwifS3G646NgSKGVtoLk2vpH+6qknh/7Nq8PErBPYmjeGq3PCpqWl/uGlmX91IYAJ5oZpRny77UQ7tBTrXn/pfpDiOwOxEuxLitApCOdGEDqwpa2ezX2Jzm2AWzrnujzKAdMijnIAi/mNKf7S6NXe+aIZd+p61HZt9aUdKO63lFWsVXeL6Jd03/ndYUAPo7sW+glc2zbHf2qD7ywl1TBUuYjQ/7wYG0IWioEI0v1pqcLAvwTXPCppqLQLhMn1OdDS+AKj2C9xlQjslmt/6QPg+Onrp/WQir8yZ6T+p/OacBYmFRbmR9va5W7Qw57fpCbOnV30iv+cfm3zSFVpWtKlNOHcchg2CMy1dQsu+XGh+elXEsOPP1gwGHATUEiEv/SzKuEURvPc4=
