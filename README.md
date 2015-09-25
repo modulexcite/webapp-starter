@@ -1,3 +1,5 @@
+# webapp-starter [![Build Status](https://travis-ci.org/esnet/webapp-starter.svg?branch=master)](https://travis-ci.org/esnet/webapp-starter)
+
 Installing node.js
 ------------------
 
