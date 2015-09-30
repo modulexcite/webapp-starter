@@ -1,14 +1,11 @@
 import React from "react";
 import App from "./components/app";
 import Router from "react-router";
-const {Route, DefaultRoute} = Router;
 
-import ContactList from "./components/contactlist";
+const {Route} = Router;
 
 const routes = (
-    <Route path="/" handler={App}>
-        <DefaultRoute name="contacts" handler={ContactList} />
-    </Route>
+    <Route path="/" handler={App} />
 );
 
 Router.run(routes, Handler => {
